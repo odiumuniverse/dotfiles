@@ -1,16 +1,10 @@
 set nocompatible
 call plug#begin()
-Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'tomtom/tlib-vim'
-Plug 'docteurclein/vim-symfone'
-Plug 'docteurclein/vim-phpunit'
 Plug 'majutsushi/tagbar'
-Plug 'davidhalter/jedi-vim'
 Plug 'Lokaltog/vim-powerline'
 Plug 'Lokaltog/powerline'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-markdown'
 Plug 'scrooloose/syntastic'
@@ -25,7 +19,6 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "let g:airline_theme='simple'
