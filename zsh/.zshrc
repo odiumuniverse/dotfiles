@@ -30,6 +30,7 @@ export LANG=en_US.UTF-8
    export EDITOR='vim'
  fi
 
+alias e="exit"
 alias ldocker="lazydocker"
 alias lgit="lazygit"
 alias zshconfig="mate ~/.zshrc"
