@@ -1,0 +1,39 @@
+let mapleader=" "
+
+set scrolloff=5
+set number relativenumber
+
+
+Plug 'preservim/nerdtree'
+
+nmap <C-h> <Action>(PreviousTab)
+nmap <C-l> <Action>(NextTab)
+nmap <leader>c :close<CR>
+nmap <leader>w <Action>(SaveDocument)
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>d <Action>(Debug)
+nmap <leader>r <Action>(Run)
+nmap <leader>R <Action>(RenameElement)
+
+set nocompatible
+set termguicolors
+set mouse=a
+
+syntax enable
+set encoding=utf8
+set hidden
+filetype plugin indent on
+
+set tabstop=4
+
+set backspace=indent,eol,start
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set background=light
+set t_Co=256
+
+

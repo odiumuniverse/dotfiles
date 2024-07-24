@@ -1,15 +1,13 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
 zstyle ':omz:update' mode auto      # update automatically without asking
-ENABLE_CORRECTION="true"
 
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git
+plugins=(
+    git
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	npm
@@ -19,8 +17,6 @@ plugins=(git
 
 
 source $ZSH/oh-my-zsh.sh
-
-
 
 export LANG=en_US.UTF-8
 
@@ -58,18 +54,8 @@ eval "$(fzf --zsh)"
 
 . "$HOME/.cargo/env"
 
-# bun completions
-[ -s "/Users/universe/.bun/_bun" ] && source "/Users/universe/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 # vm_envs start
 if [ -z "$VM_DISABLE" ]; then
     . ~/.vmr/vmr.sh
 fi
 # vm_envs end
-
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
