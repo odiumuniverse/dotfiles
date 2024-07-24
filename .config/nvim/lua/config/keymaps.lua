@@ -19,6 +19,11 @@ map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
+-- map("n", "C-h", "<cmd>wincmd h<CR>", {desc = "go", remap = true})
+-- map("n", "C-j", "<cmd>wincmd j<CR>", {desc = "go", remap = true})
+-- map("n", "C-k", "<cmd>wincmd k<CR>", {desc = "go", remap = true})
+-- map("n", "C-l", "<cmd>wincmd l<CR>", {desc = "go", remap = true})
+
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })

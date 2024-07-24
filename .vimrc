@@ -2,9 +2,11 @@ set nocompatible
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'tomtom/tlib-vim'
 Plug 'majutsushi/tagbar'
 Plug 'Lokaltog/vim-powerline'
 Plug 'Lokaltog/powerline'
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-markdown'
 Plug 'scrooloose/syntastic'
@@ -12,7 +14,6 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-system-copy'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -21,9 +22,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 call plug#end()
 
-"let g:airline_theme='simple'
-set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
+set termguicolors
+let ayucolor="light"
 
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
@@ -51,9 +51,9 @@ set background=light
 set t_Co=256
 
 " NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif    " Open NERDTree on vim starts up if no files were specified
-map <F2> :NERDTreeToggle<CR>                       " Crtl+n to open NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif  " Close vim if only NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Powerline
 set laststatus=2   " Always show the statusline
@@ -62,9 +62,6 @@ let g:Powerline_symbols = 'fancy'
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
-
-" Vim-plugin-tagbar-phpctags
-let g:tagbar_phpctags_memory_limit = '512M'
 
 if executable('pylsp')
     " pip install python-lsp-server
@@ -121,13 +118,8 @@ imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 " Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-" See https://github.com/hrsh7th/vim-vsnip/pull/50
 nmap        s   <Plug>(vsnip-select-text)
 xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 
-" If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript']
-let g:vsnip_filetypes.typescriptreact = ['typescript']

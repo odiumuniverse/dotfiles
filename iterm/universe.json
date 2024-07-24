@@ -1,8 +1,10 @@
 {
-  "Ansi 0 Color" : {
-    "Green Component" : 0,
-    "Red Component" : 0,
-    "Blue Component" : 0
+  "Ansi 12 Color (Light)" : {
+    "Red Component" : 0.65349078178405762,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.9485321044921875,
+    "Alpha Component" : 1,
+    "Green Component" : 0.67044717073440552
   },
   "Ansi 15 Color (Dark)" : {
     "Red Component" : 0.99999600648880005,
@@ -11,8 +13,14 @@
     "Alpha Component" : 1,
     "Green Component" : 1
   },
-  "Close Sessions On End" : true,
-  "Non-ASCII Anti Aliased" : true,
+  "Show Timestamps" : 0,
+  "Foreground Color (Dark)" : {
+    "Red Component" : 0.86197912693023682,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.86198854446411133,
+    "Alpha Component" : 1,
+    "Green Component" : 0.86199951171875
+  },
   "Cursor Text Color" : {
     "Green Component" : 1,
     "Red Component" : 1,
@@ -36,6 +44,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.67044717073440552
   },
+  "Initial Use Transparency" : true,
   "Mouse Reporting" : true,
   "Use Underline Color (Light)" : false,
   "Disable Window Resizing" : true,
@@ -93,7 +102,7 @@
   "Transparency" : 0,
   "Custom Icon Path" : "\/Users\/azamatisbaev\/Downloads\/devicons-master\/!PNG\/android.png",
   "Use Bright Bold" : true,
-  "Horizontal Spacing" : 0.90000000000000002,
+  "Horizontal Spacing" : 1,
   "Ansi 13 Color (Light)" : {
     "Red Component" : 0.8821563720703125,
     "Color Space" : "sRGB",
@@ -161,7 +170,7 @@
     "Red Component" : 0.24705882352941178,
     "Blue Component" : 0.22745098039215686
   },
-  "Vertical Spacing" : 1.1000000000000001,
+  "Vertical Spacing" : 1,
   "Use Tab Color (Light)" : false,
   "Cursor Type" : 2,
   "Columns" : 80,
@@ -364,7 +373,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.9042816162109375
   },
-  "Normal Font" : "RobotoMonoNFM-Rg 16",
+  "Normal Font" : "RobotoMonoNFM-Rg 17",
   "Use Selected Text Color (Dark)" : true,
   "Foreground Color" : {
     "Red Component" : 0,
@@ -402,7 +411,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.24931684136390686
   },
-  "Window Type" : 0,
+  "Window Type" : 12,
   "Icon" : 1,
   "Brighten Bold Text" : true,
   "ASCII Anti Aliased" : true,
@@ -820,7 +829,7 @@
   },
   "Use Separate Colors for Light and Dark Mode" : false,
   "Draw Powerline Glyphs" : true,
-  "Custom Tab Title" : "Dead Inside",
+  "Custom Tab Title" : "",
   "Ansi 3 Color" : {
     "Green Component" : 0.71372549019607845,
     "Red Component" : 0.82352941176470584,
@@ -875,19 +884,11 @@
     "Red Component" : 0.16470588235294117,
     "Blue Component" : 0.20000000000000001
   },
-  "Ansi 12 Color (Light)" : {
-    "Red Component" : 0.65349078178405762,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.9485321044921875,
-    "Alpha Component" : 1,
-    "Green Component" : 0.67044717073440552
+  "Ansi 0 Color" : {
+    "Green Component" : 0,
+    "Red Component" : 0,
+    "Blue Component" : 0
   },
-  "Show Timestamps" : 0,
-  "Foreground Color (Dark)" : {
-    "Red Component" : 0.86197912693023682,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.86198854446411133,
-    "Alpha Component" : 1,
-    "Green Component" : 0.86199951171875
-  }
+  "Close Sessions On End" : true,
+  "Non-ASCII Anti Aliased" : true
 }
