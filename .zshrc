@@ -10,6 +10,7 @@ plugins=(
     git
 	zsh-syntax-highlighting
 	zsh-autosuggestions
+	zsh-completions
 	npm
 	docker
 	chucknorris
