@@ -4,3 +4,9 @@
 
 ##### - Run `brew bundle install` to get full brew configuration
 
+####  - If macos, run 
+```bash
+git clone https://github.com/odiumuniverse/dotfiles.git
+cd dotfiles
+stow .
+```
