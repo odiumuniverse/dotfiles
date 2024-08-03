@@ -7,7 +7,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
-    git
+	git
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	zsh-completions
@@ -28,19 +28,14 @@ export LANG=en_US.UTF-8
  fi
 
 alias e="exit"
-alias ldocker="lazydocker"
-alias lgit="lazygit"
-alias zshconfig="mate ~/.zshrc"
+alias ldock="lazydocker"
+alias lg="lazygit"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias c-tab="zellij action close-tab"
-alias c-pane="zellij action close-pane"
-alias lvim="/Users/azamatisbaev/.local/bin/lvim"
 alias lstree="ls --tree --level=2"
 alias c="clear"
 alias cd="z"
 alias cat="bat"
-alias less="bat"
 alias fzf="fzf --preview "bat --color=always --style=numbers --line-range=:500 {}""
 alias n="nvim"
 alias h="hyfetch"
