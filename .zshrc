@@ -11,8 +11,8 @@ plugins=(
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	zsh-completions
-	npm
-	docker
+    docker
+	golang
 	chucknorris
 )
 
