@@ -48,10 +48,12 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
-. "$HOME/.cargo/env"
 
-# vm_envs start
-if [ -z "$VM_DISABLE" ]; then
-    . ~/.vmr/vmr.sh
-fi
-# vm_envs end
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/Users/universe/.opam/opam-init/init.zsh' ]] || source '/Users/universe/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
