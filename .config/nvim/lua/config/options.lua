@@ -1,6 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options heredocs
 -- This file is automatically loaded by plugins.core
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -14,6 +11,10 @@ vim.g.autoformat = true
 -- enabled with `:LazyExtras`
 vim.g.lazyvim_picker = "auto"
 
+-- if the completion engine supports the AI source,
+-- use that instead of inline suggestions
+vim.g.ai_cmp = true
+
 -- LazyVim root dir detection
 -- Each entry can be:
 -- * the name of a detector function like `lsp` or `cwd`
@@ -21,35 +22,21 @@ vim.g.lazyvim_picker = "auto"
 -- * a function with signature `function(buf) -> string|string[]`
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
--- LazyVim automatically configures lazygit:
---  * theme, based on the active colorscheme.
---  * editorPreset to nvim-remote
---  * enables nerd font icons
--- Set to false to disable.
-vim.g.lazygit_config = true
-
--- Options for the LazyVim statuscolumn
-vim.g.lazyvim_statuscolumn = {
-  folds_open = false, -- show fold sign when fold is open
-  folds_githl = false, -- highlight fold sign with git sign color
-}
-
 -- Optionally setup the terminal to use
 -- This sets `vim.o.shell` and does some additional configuration for:
 -- * pwsh
 -- * powershell
 -- LazyVim.terminal.setup("pwsh")
 
+-- Set LSP servers to be ignored when used with `util.root.detectors.lsp`
+-- for detecting the LSP root
+vim.g.root_lsp_ignore = { "copilot" }
+
 -- Hide deprecation warnings
 vim.g.deprecation_warnings = false
 
--- Set filetype to `bigfile` for files larger than 1.5 MB
--- Only vim syntax will be enabled (with the correct filetype)
--- LSP, treesitter and other ft plugins will be disabled.
--- mini.animate will also be disabled.
-vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
-
 -- Show the current document symbols location from Trouble in lualine
+-- You can disable this for a buffer by setting `vim.b.trouble_lualine = false`
 vim.g.trouble_lualine = true
 
 local opt = vim.opt
@@ -57,12 +44,12 @@ local opt = vim.opt
 opt.autowrite = true -- Enable auto write
 -- only set clipboard if not in ssh, to make sure the OSC 52
 -- integration works automatically. Requires Neovim >= 0.10.0
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
-opt.expandtab = false -- Use spaces instead of tabs
+opt.expandtab = true -- Use spaces instead of tabs
 opt.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -71,7 +58,7 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
-opt.foldlevel = 50
+opt.foldlevel = 99
 opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
@@ -87,6 +74,7 @@ opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
+opt.ruler = false -- Disable the default ruler
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true -- Round indent
@@ -98,11 +86,10 @@ opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift t
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
 opt.spelllang = { "en" }
-opt.spelloptions:append("noplainbuffer")
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
-opt.statuscolumn = [[%!v:lua.require'lazyvim.util'.ui.statuscolumn()]]
+opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
