@@ -2,7 +2,6 @@ set nocompatible
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'tomtom/tlib-vim'
 Plug 'majutsushi/tagbar'
 Plug 'Lokaltog/vim-powerline'
 Plug 'Lokaltog/powerline'
