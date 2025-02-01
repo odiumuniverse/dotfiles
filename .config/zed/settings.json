@@ -1,4 +1,9 @@
 {
+  "languages": {
+    "Go": {
+      "show_inline_completions": false
+    }
+  },
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -10,7 +15,7 @@
     "diagnostics": false,
     "metrics": false
   },
-  "base_keymap": "SublimeText",
+  "base_keymap": "JetBrains",
   "theme": "Github Light Colorblind",
   "vim_mode": true,
   "ui_font_size": 15,
