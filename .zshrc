@@ -57,3 +57,11 @@ eval "$(fzf --zsh)"
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/universe/.opam/opam-init/init.zsh' ]] || source '/Users/universe/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+# vm_envs start
+if [ -z "$VM_DISABLE" ]; then
+    . ~/.vmr/vmr.sh
+fi
+# vm_envs end
+
+alias svmr="export VM_DISABLE='' && source /Users/universe/.zshrc"
