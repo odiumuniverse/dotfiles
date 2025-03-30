@@ -15,5 +15,14 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.99
 config.macos_window_background_blur = 20
+config.window_padding = {
+	left = 5,
+	right = 0,
+	top = 25,
+	bottom = 10,
+}
+
+config.max_fps = 120
+config.prefer_egl = true
 
 return config
