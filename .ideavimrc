@@ -1,21 +1,34 @@
 let mapleader=" "
 
+set nocompatible
+set timeoutlen=300
 set scrolloff=5
-set number relativenumber
+set rnu!
 
 
 Plug 'preservim/nerdtree'
 
 nmap <C-h> <Action>(PreviousTab)
 nmap <C-l> <Action>(NextTab)
-nmap <leader>c :close<CR>
-nmap <leader>w <Action>(SaveDocument)
+nmap <leader>bd :close<CR>
+nmap <C-s> <Action>(SaveDocument)
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>d <Action>(Debug)
-nmap <leader>r <Action>(Run)
-nmap <leader>R <Action>(RenameElement)
+map <leader>r <Action>(Run)
+nmap <leader>cr <Action>(RenameElement)
 
-set nocompatible
+imap jk <Esc>
+nmap <Leader>e :NERDTreeToggle<CR>
+imap <Leader>e <Esc>:NERDTreeToggle<CR>a
+vmap <Leader>e <Esc>:NERDTreeToggle<CR>gv
+nmap <Leader>z <Action>(ToggleDistractionFreeMode)
+nmap <Leader>cf <Action>(ReformatCode)
+nmap <Leader>f <Action>(GotoFile)
+nmap <Leader>/ <Action>(FindInPath)
+
+map <leader>o <Action>(FileStructurePopup)
+
+
 set termguicolors
 set mouse=a
 
@@ -33,7 +46,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-set background=light
+set background=dark
 set t_Co=256
 
 
