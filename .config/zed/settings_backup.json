@@ -1,19 +1,17 @@
 {
-  "tab_bar": {
-    "show": true
-  },
   "features": {
     "edit_prediction_provider": "zed"
   },
   "languages": {
     "Go": {
-      "show_edit_predictions": true
+      "show_edit_predictions": true,
+      "show_inline_completions": false
     }
   },
   "assistant": {
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet-thought"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
@@ -28,13 +26,9 @@
   "buffer_font_size": 16,
   "ui_font_family": "FiraCode Nerd Font Mono",
   "buffer_font_family": "FiraCode Nerd Font Mono",
-  "terminal": {
-    "font_size": 15
-  },
+  "terminal": { "font_size": 15 },
   "relative_line_numbers": true,
-  "vim": {
-    "use_system_clipboard": "always"
-  },
+  "vim": { "use_system_clipboard": "always" },
   "gutter": {
     "folds": true
   },
@@ -44,7 +38,7 @@
   "context_servers": {
     "postgres-context-server": {
       "settings": {
-        "database_url": "postgresql://postgres:postgres@localhost:5432/vulnsrv?sslmode=disable"
+        "database_url": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
       }
     }
   }

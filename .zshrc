@@ -20,6 +20,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
+export GOPRIVATE=git.topscan.me
+export GOPROXY=direct
+export GOSUMDB=off
+export PATH=/Users/universe/.nvm/versions/node/v20.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/Users/universe/.local/bin/:/Users/universe/go/bin/
+export GOPATH=/Users/universe/go/
 
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
@@ -49,6 +54,9 @@ eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
 
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:

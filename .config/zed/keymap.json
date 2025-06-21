@@ -1,0 +1,39 @@
+[
+  {
+    "bindings": {
+      "alt-down": ["workspace::SendKeystrokes", "down down down down"],
+      "cmd-alt-c": [
+        "workspace::SendKeystrokes",
+        "cmd-shift-p copy relative path enter"
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "shift l": ["workspace::SendKeystrokes", ":tabnext"],
+      "shift h": ["workspace::SendKeystrokes", ":tabprev"]
+    }
+  },
+  {
+    "context": "Project_panel || vim_mode == normal",
+    "bindings": {
+      "space e": "project_panel::ToggleFocus",
+      "space v": "editor::ToggleTabBar"
+    }
+  },
+  {
+    "context": "vim_mode==normal",
+    "bindings": {
+      "space d a": "workspace::CloseInactiveTabsAndPanes",
+      "shift shift": "file_finder::Toggle",
+      "space g g": "git_onboarding::OpenGitIntegrationOnboarding"
+    }
+  }
+]

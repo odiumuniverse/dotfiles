@@ -101,8 +101,12 @@ if.app-id = 'com.apple.TV'
 run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
-if.app-id = 'com.openai.chat'
+if.app-id = 'md.obsidian'
 run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.goland'
+run = ['move-node-to-workspace 4']
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'
