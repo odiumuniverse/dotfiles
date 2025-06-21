@@ -18,9 +18,6 @@ map <leader>r <Action>(Run)
 nmap <leader>cr <Action>(RenameElement)
 
 imap jk <Esc>
-nmap <Leader>e :NERDTreeToggle<CR>
-imap <Leader>e <Esc>:NERDTreeToggle<CR>a
-vmap <Leader>e <Esc>:NERDTreeToggle<CR>gv
 nmap <Leader>z <Action>(ToggleDistractionFreeMode)
 nmap <Leader>cf <Action>(ReformatCode)
 nmap <Leader>f <Action>(GotoFile)
