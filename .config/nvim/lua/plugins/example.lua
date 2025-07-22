@@ -9,16 +9,6 @@ if true then return {} end
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- change trouble config
-  {
-    "folke/trouble.nvim",
-    -- opts will be merged with the parent spec
-    opts = { use_diagnostic_signs = true },
-  },
-
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
-
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",
