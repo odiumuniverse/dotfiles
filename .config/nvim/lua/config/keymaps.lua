@@ -21,19 +21,12 @@ map("n", "<leader>tc", "<cmd>GoClearTag<cr>", { desc = "Clear tags" })
 map("n", "<leader>m", "<cmd>GoAlt!<cr>", { desc = "Alternative file" })
 
 -- Go Debug
-map("n", "<leader>ds", "<cmd>GoDebug -t<cr>", { desc = "Run debug for test" })
-map("n", "<leader>dr", "<cmd>GoDebug -R<cr>", { desc = "Restart debug for test" })
-map("n", "<leader>de", "<cmd>GoDbgStop<cr>", { desc = "Stop debug" })
+map("n", "<leader>dS", "<cmd>GoDebug -t<cr>", { desc = "Run debug for test" })
+map("n", "<leader>dR", "<cmd>GoDebug -R<cr>", { desc = "Restart debug for test" })
+map("n", "<leader>dE", "<cmd>GoDbgStop<cr>", { desc = "Stop debug" })
 map("n", "<leader>db", "<cmd>GoBreakToggle<cr>", { desc = "Toogle Breakpoint" })
 
 map({ "i", "s" }, "jk", "<cmd>noh<cr><esc>", { desc = "Escape and Clear search" })
-
--- floating terminal
-map("n", "<leader>fT", function()
-  Snacks.terminal()
-end, { desc = "Terminal (cwd)" })
-map("n", "<leader>ft", "<cmd>ToggleTerm direction=float<cr>", { desc = "Terminal (Root Dir)" })
-map("n", "<c-/>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Terminal (Root Dir)" })
 
 -- Terminal Mappings
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
@@ -220,7 +213,7 @@ map("n", "<leader>uI", function() vim.treesitter.inspect_tree() vim.api.nvim_inp
 map("n", "<leader>L", function() LazyVim.news.changelog() end, { desc = "LazyVim Changelog" })
 
 -- floating terminal
-map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
+map("n", "<leader>ft", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 
 -- Terminal Mappings
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })

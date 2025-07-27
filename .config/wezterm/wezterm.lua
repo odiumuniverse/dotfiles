@@ -11,7 +11,7 @@ config.enable_tab_bar = false
 
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.7
-config.macos_window_background_blur = 20
+config.macos_window_background_blur = 25
 -- config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "bg-blurred.png")
 config.window_padding = {
 	left = 5,
