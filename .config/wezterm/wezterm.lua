@@ -1,5 +1,18 @@
 local wezterm = require("wezterm")
 
+local keys = {}
+for i = 32, 126 do
+	local c = string.char(i)
+	table.insert(keys, {
+		key = c,
+		mods = "OPT",
+		action = wezterm.action.SendKey({
+			key = c,
+			mods = "ALT",
+		}),
+	})
+end
+
 local config = wezterm.config_builder()
 -- config.color_scheme = "Google Light (Gogh)"
 config.color_scheme = "cyberdream"
