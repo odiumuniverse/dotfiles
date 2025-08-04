@@ -19,7 +19,7 @@ vim.g.lazyvim_picker = "auto"
 -- Can be one of: nvim-cmp, blink.cmp
 -- Leave it to "auto" to automatically use the completion engine
 -- enabled with `:LazyExtras`
-vim.g.lazyvim_cmp = "auto"
+vim.g.lazyvim_cmp = "blink.cmp"
 
 -- if the completion engine supports the AI source,
 -- use that instead of inline suggestions
