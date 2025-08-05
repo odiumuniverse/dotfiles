@@ -116,6 +116,10 @@ if.app-id = 'com.jetbrains.goland'
 run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
+if.app-id = 'com.docker.docker'
+run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = ['move-node-to-workspace 9']
 
