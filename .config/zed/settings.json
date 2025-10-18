@@ -10,22 +10,21 @@
       "show_edit_predictions": true
     }
   },
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-3.7-sonnet-thought"
-    },
-    "version": "2"
+    }
   },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  "base_keymap": "JetBrains",
-  "theme": "Github Light Colorblind",
+  "base_keymap": "Cursor",
+  "theme": "Carbonfox - blurred",
   "vim_mode": true,
   "ui_font_size": 15,
-  "buffer_font_size": 16,
+  "buffer_font_size": 17,
   "ui_font_family": "FiraCode Nerd Font Mono",
   "buffer_font_family": "FiraCode Nerd Font Mono",
   "terminal": {
@@ -43,6 +42,7 @@
   },
   "context_servers": {
     "postgres-context-server": {
+      "source": "extension",
       "settings": {
         "database_url": "postgresql://postgres:postgres@localhost:5432/vulnsrv?sslmode=disable"
       }
