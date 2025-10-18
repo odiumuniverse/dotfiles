@@ -123,6 +123,10 @@ run = ['move-node-to-workspace 8']
 if.app-id = 'com.spotify.client'
 run = ['move-node-to-workspace 9']
 
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = ['move-node-to-workspace 7']
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
