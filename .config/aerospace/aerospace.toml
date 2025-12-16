@@ -116,7 +116,7 @@ if.app-id = 'com.jetbrains.goland'
 run = ['move-node-to-workspace 4']
 
 [[on-window-detected]]
-if.app-id = 'com.docker.docker'
+if.app-id = 'dev.kdrag0n.MacVirt'
 run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
@@ -125,6 +125,10 @@ run = ['move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
+run = ['move-node-to-workspace 7']
+
+[[on-window-detected]]
+if.app-id = 'com.todesktop.230313mzl4w4u92'
 run = ['move-node-to-workspace 7']
 
 [workspace-to-monitor-force-assignment]
