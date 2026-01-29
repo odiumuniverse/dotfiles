@@ -30,7 +30,7 @@
   "terminal": {
     "font_size": 15
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "vim": {
     "use_system_clipboard": "always"
   },
@@ -42,7 +42,6 @@
   },
   "context_servers": {
     "postgres-context-server": {
-      "source": "extension",
       "settings": {
         "database_url": "postgresql://postgres:postgres@localhost:5432/vulnsrv?sslmode=disable"
       }

@@ -131,6 +131,10 @@ run = ['move-node-to-workspace 7']
 if.app-id = 'com.todesktop.230313mzl4w4u92'
 run = ['move-node-to-workspace 7']
 
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace 7']
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
