@@ -23,7 +23,7 @@ export LANG=en_US.UTF-8
 export GOPRIVATE=git.topscan.me
 export GOPROXY=direct
 export GOSUMDB=off
-export PATH=/Users/universe/.nvm/versions/node/v20.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/Users/universe/.local/bin/:/Users/universe/go/bin/:/Users/universe/.cargo/bin:/Users/universe/.spicetify
+export PATH=/Users/universe/.nvm/versions/node/v20.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/Users/universe/.local/bin/:/Users/universe/go/bin/:/Users/universe/.cargo/bin:/Users/universe/.spicetify:/Applications/Obsidian.app/Contents/MacOS
 export GOPATH=/Users/universe/go/
 
  if [[ -n $SSH_CONNECTION ]]; then
@@ -48,6 +48,7 @@ alias python="python3"
 alias sptd="spotify_player -d"
 alias spt="spotify_player"
 alias cur="cursor-agent"
+alias claude1="CLAUDE_CONFIG_DIR=~/.claude-account1 claude"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # eval "$(oh-my-posh init zsh)"

@@ -14,6 +14,9 @@ map("n", "<leader>cl", "<cmd>GoCodeLenAct<cr>", { desc = "Code lens" })
 map("n", "<leader>rg", "<cmd>GoAddTest<cr>", { desc = "Generate test for function" })
 map({ "n", "i" }, "<leader>fs", "<cmd>GoFillStruct<cr>", { desc = "Fill Go struct" })
 
+-- Obsidian
+map("n", "<leader>o", "<cmd>Obsidian<cr>", { desc = "Obsidian" })
+
 -- Go Tags for structs
 map("n", "<leader>ta", "<cmd>GoAddTag<cr>", { desc = "Add tags" })
 map("n", "<leader>tr", "<cmd>GoRmTag<cr>", { desc = "Remove tags" })

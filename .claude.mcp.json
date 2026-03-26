@@ -1,0 +1,69 @@
+{
+  "mcpServers": {
+    "zai-mcp-server": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@z_ai/mcp-server"],
+      "env": {
+        "Z_AI_MODE": "ZAI",
+        "Z_AI_API_KEY": "${Z_AI_API_KEY}"
+      }
+    },
+    "web-reader": {
+      "type": "http",
+      "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+      "headers": {
+        "Authorization": "Bearer ${Z_AI_API_KEY}"
+      }
+    },
+    "zread": {
+      "type": "http",
+      "url": "https://api.z.ai/api/mcp/zread/mcp",
+      "headers": {
+        "Authorization": "Bearer ${Z_AI_API_KEY}"
+      }
+    },
+    "web-search-prime": {
+      "type": "http",
+      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+      "headers": {
+        "Authorization": "Bearer ${Z_AI_API_KEY}"
+      }
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    },
+    "obsidian": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@mauricio.wolff/mcp-obsidian@latest", "${OBSIDIAN_VAULT_PATH}"]
+    },
+    "language-server": {
+      "type": "stdio",
+      "command": "mcp-language-server",
+      "args": ["--workspace", "${LANGUAGE_SERVER_WORKSPACE}", "--lsp", "gopls"],
+      "env": {
+        "PATH": "${GOBIN_PATH}:/opt/homebrew/bin:/usr/bin:/bin",
+        "GOPATH": "${GOPATH}",
+        "GOCACHE": "${GOCACHE}",
+        "GOMODCACHE": "${GOMODCACHE}"
+      }
+    },
+    "tmux": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "tmux-mcp"],
+      "env": {}
+    },
+    "orbstack": {
+      "type": "stdio",
+      "command": "${ORBSTACK_MCP_PYTHON}",
+      "args": ["${ORBSTACK_MCP_SERVER_PY}"],
+      "env": {}
+    }
+  }
+}
