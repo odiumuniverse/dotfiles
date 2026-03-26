@@ -5,3 +5,7 @@ Brewfile
 .git
 iterm
 .gitconfig
+.gitignore
+.claude-shared
+.claude.mcp.json
+.claude.secrets.env

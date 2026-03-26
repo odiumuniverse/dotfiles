@@ -1,4 +1,5 @@
-README.md 
+README.md
 Brewfile
 .config/raycast
+.claude.secrets.env
 
