@@ -48,7 +48,6 @@ alias python="python3"
 alias sptd="spotify_player -d"
 alias spt="spotify_player"
 alias cur="cursor-agent"
-alias claude1="CLAUDE_CONFIG_DIR=~/.claude-account1 claude"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # eval "$(oh-my-posh init zsh)"
