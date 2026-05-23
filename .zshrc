@@ -45,10 +45,9 @@ alias fzf="fzf --preview "bat --color=always --style=numbers --line-range=:500 {
 alias n="nvim"
 alias h="hyfetch"
 alias python="python3"
-alias sptd="spotify_player -d"
-alias spt="spotify_player"
 alias cur="cursor-agent"
 alias cs="cswap --switch"
+alias spt="spotatui"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # eval "$(oh-my-posh init zsh)"
