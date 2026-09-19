@@ -2,5 +2,5 @@ README.md
 Brewfile
 .config/raycast
 .claude.secrets.env
-.config/zsh/boundary.zsh
+.config/zsh/local.zsh
 

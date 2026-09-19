@@ -21,7 +21,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
-export GOPRIVATE=REDACTED
+# Machine-local env (GOPRIVATE, Boundary IDs) lives in ~/.config/zsh/local.zsh (untracked).
+[ -s ~/.config/zsh/local.zsh ] && source ~/.config/zsh/local.zsh
 export GOPROXY=direct
 export GOSUMDB=off
 export PATH=/Users/universe/.nvm/versions/node/v20.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/Users/universe/.local/bin/:/Users/universe/go/bin/:/Users/universe/.cargo/bin:/Users/universe/.spicetify:/Applications/Obsidian.app/Contents/MacOS
@@ -73,8 +74,7 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(zoxide init zsh)"
 
 # boundary: no args -> connect target, auth-on-fail fallback. Args -> passthrough real binary.
-# Address, target and auth-method IDs live in ~/.config/zsh/boundary.zsh (untracked).
-[ -s ~/.config/zsh/boundary.zsh ] && source ~/.config/zsh/boundary.zsh
+# Uses BOUNDARY_* values from ~/.config/zsh/local.zsh (sourced above, untracked).
 boundary() {
   local addr=${BOUNDARY_ADDR:?set BOUNDARY_ADDR in ~/.config/zsh/boundary.zsh}
   local target=${BOUNDARY_TARGET_ID:?set BOUNDARY_TARGET_ID in ~/.config/zsh/boundary.zsh}
