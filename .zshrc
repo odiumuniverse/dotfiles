@@ -14,6 +14,7 @@ plugins=(
     docker
 	golang
 	chucknorris
+	herdr
 )
 
 
@@ -53,7 +54,6 @@ alias spt="spotatui"
 # eval "$(oh-my-posh init zsh)"
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
-eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
 
@@ -68,3 +68,39 @@ export NVM_DIR="$HOME/.nvm"
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/universe/.opam/opam-init/init.zsh' ]] || source '/Users/universe/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+# zoxide must init last (see zoxide doctor)
+eval "$(zoxide init zsh)"
+
+# boundary: no args -> connect target, auth-on-fail fallback. Args -> passthrough real binary.
+# Address, target and auth-method IDs live in ~/.config/zsh/boundary.zsh (untracked).
+[ -s ~/.config/zsh/boundary.zsh ] && source ~/.config/zsh/boundary.zsh
+boundary() {
+  local addr=${BOUNDARY_ADDR:?set BOUNDARY_ADDR in ~/.config/zsh/boundary.zsh}
+  local target=${BOUNDARY_TARGET_ID:?set BOUNDARY_TARGET_ID in ~/.config/zsh/boundary.zsh}
+  local authmethod=${BOUNDARY_AUTH_METHOD_ID:?set BOUNDARY_AUTH_METHOD_ID in ~/.config/zsh/boundary.zsh}
+  if [[ $# -eq 0 ]]; then
+    command boundary connect -addr "$addr" -target-id "$target" || {
+      command boundary authenticate oidc -addr "$addr" -auth-method-id "$authmethod" &&
+      command boundary connect -addr "$addr" -target-id "$target"
+    }
+  else
+    command boundary "$@"
+  fi
+}
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/universe/.local/bin:$PATH"
+
+# herdr-automatic-rename: мгновенное переименование табов при старте команды
+for _f in ${HOME}/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.zsh(N); do
+  source $_f; break
+done
+
+# bun completions
+[ -s "/Users/universe/.bun/_bun" ] && source "/Users/universe/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
