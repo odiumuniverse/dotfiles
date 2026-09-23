@@ -23,6 +23,14 @@ ensure_count() {
   done
 }
 
+# spaces created while a monitor was unplugged stay behind after it comes back; drop the tail
+trim_count() {
+  local display=$1 want=$2
+  for idx in $(regular_spaces "$display" | jq -r ".[$want:] | reverse[]"); do
+    yabai -m space "$idx" --destroy || break
+  done
+}
+
 label_range() {
   local display=$1 first=$2 count=$3 i=0
   for idx in $(regular_spaces "$display" | jq -r ".[:$count][]"); do
@@ -38,6 +46,8 @@ done
 if [ -n "$secondary" ]; then
   ensure_count "$main" 5
   ensure_count "$secondary" 5
+  trim_count "$main" 5
+  trim_count "$secondary" 5
   label_range "$main" 1 5
   label_range "$secondary" 6 5
 else
@@ -62,6 +72,17 @@ for rule in "${rules[@]}"; do
   IFS=: read -r name app space <<<"$rule"
   yabai -m rule --remove "$name" 2>/dev/null
   yabai -m rule --add label="$name" app="$app" subrole="^AXStandardWindow$" space="^$space" 2>/dev/null
+done
+
+# rules only fire for new windows; a monitor change dumps existing ones onto whatever space macOS picks
+windows=$(yabai -m query --windows)
+for rule in "${rules[@]}"; do
+  IFS=: read -r name app space <<<"$rule"
+  for id in $(jq -r --arg app "$app" '
+    .[] | select((.app | test($app)) and .subrole == "AXStandardWindow") | .id
+  ' <<<"$windows"); do
+    yabai -m window "$id" --space "$space" 2>/dev/null
+  done
 done
 
 open -g "swiftbar://refreshplugin?name=yabai" 2>/dev/null
