@@ -30,10 +30,12 @@ yabai -m config window_animation_duration 0.0
 # always floating
 yabai -m rule --add label=settings-float app="^System Settings$" manage=off
 yabai -m rule --apply settings-float
+yabai -m rule --add label=activity-monitor-float app="^Activity Monitor$" manage=off
+yabai -m rule --apply activity-monitor-float
 # fixed-size windows (settings) float; Arc placement incl. Little Arc
 yabai -m signal --add label=window-created event=window_created action="$HOME/.config/yabai/window-created.sh"
 
-# Arc/Obsidian/Slack/Telegram at 0.9 opacity, or all opaque in work mode (alt-shift-w)
+# Telegram at 0.9 opacity, or all opaque in work mode (alt-shift-w)
 "$HOME/.config/yabai/work-mode.sh" apply
 
 # ws1-5 main display, ws6-10 secondary, app rules; re-run when monitors change
