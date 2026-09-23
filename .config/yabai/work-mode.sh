@@ -4,9 +4,6 @@
 
 flag=/tmp/yabai-work-mode
 opacity_rules=(
-  "arc-opacity:^Arc$"
-  "obsidian-opacity:^Obsidian$"
-  "slack-opacity:^Slack$"
   "telegram-opacity:^Telegram$"
 )
 
