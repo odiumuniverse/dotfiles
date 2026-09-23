@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+
+# scripting addition: needs partially disabled SIP + /private/etc/sudoers.d/yabai;
+# after every yabai upgrade run `sudo ~/.config/yabai/patch-sa.sh` and refresh the sudoers hash
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# tiles, auto orientation (aerospace default-root-container-*)
+yabai -m config layout bsp
+yabai -m config split_type auto
+yabai -m config window_placement second_child
+yabai -m config auto_balance off
+
+# gaps 6 everywhere
+yabai -m config top_padding 6
+yabai -m config bottom_padding 6
+yabai -m config left_padding 6
+yabai -m config right_padding 6
+yabai -m config window_gap 6
+
+# on-focused-monitor-changed = move-mouse monitor-lazy-center
+# mouse_follows_focus via our script: yabai's own warps into Arc's invisible PiP dialog
+yabai -m config mouse_follows_focus off
+yabai -m signal --add label=mouse-follows-focus event=window_focused action="$HOME/.config/yabai/mouse-follows-focus.sh"
+yabai -m config focus_follows_mouse off
+
+# no animations: instant moves/resizes
+yabai -m config window_animation_duration 0.0
+
+# always floating
+yabai -m rule --add label=settings-float app="^System Settings$" manage=off
+yabai -m rule --apply settings-float
+# fixed-size windows (settings) float; Arc placement incl. Little Arc
+yabai -m signal --add label=window-created event=window_created action="$HOME/.config/yabai/window-created.sh"
+
+# Arc/Obsidian/Slack/Telegram at 0.9 opacity, or all opaque in work mode (alt-shift-w)
+"$HOME/.config/yabai/work-mode.sh" apply
+
+# ws1-5 main display, ws6-10 secondary, app rules; re-run when monitors change
+"$HOME/.config/yabai/spaces.sh"
+yabai -m signal --add event=display_added action="$HOME/.config/yabai/spaces.sh"
+yabai -m signal --add event=display_removed action="$HOME/.config/yabai/spaces.sh"
+
+# menu bar indicator (SwiftBar plugin ~/.config/swiftbar/yabai.sh)
+for event in space_changed display_changed window_created window_destroyed application_launched application_terminated; do
+  yabai -m signal --add event=$event action='open -g "swiftbar://refreshplugin?name=yabai"'
+done

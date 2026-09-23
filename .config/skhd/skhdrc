@@ -1,0 +1,81 @@
+# Ported from aerospace.toml. Keycodes: 0x2C slash, 0x2B comma, 0x1B minus, 0x18 equal, 0x29 semicolon
+
+# layout tiles horizontal vertical: bsp, or rotate split if already bsp
+alt - 0x2C : [ "$(yabai -m query --spaces --space | jq -r .type)" = bsp ] \
+               && yabai -m window --toggle split \
+               || yabai -m space --layout bsp
+# layout accordion
+alt - 0x2B : yabai -m space --layout stack
+
+# focus (walks the stack when there is no neighbour, like accordion)
+alt - h : yabai -m window --focus west  || yabai -m window --focus stack.prev
+alt - j : yabai -m window --focus south || yabai -m window --focus stack.next
+alt - k : yabai -m window --focus north || yabai -m window --focus stack.prev
+alt - l : yabai -m window --focus east  || yabai -m window --focus stack.next
+
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# work mode for screen sharing: all windows opaque, shadows back
+alt + shift - w : ~/.config/yabai/work-mode.sh toggle
+
+# move (falls through to the neighbouring display)
+alt + shift - h : yabai -m window --swap west  || { yabai -m window --display west  && yabai -m display --focus west; }
+alt + shift - j : yabai -m window --swap south || { yabai -m window --display south && yabai -m display --focus south; }
+alt + shift - k : yabai -m window --swap north || { yabai -m window --display north && yabai -m display --focus north; }
+alt + shift - l : yabai -m window --swap east  || { yabai -m window --display east  && yabai -m display --focus east; }
+
+# resize smart -50 / +50
+alt + shift - 0x1B : yabai -m window --resize right:-50:0 || yabai -m window --resize left:50:0; \
+                     yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:50
+alt + shift - 0x18 : yabai -m window --resize right:50:0 || yabai -m window --resize left:-50:0; \
+                     yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:-50
+
+# workspace N (alt-0 = ws10)
+alt - 1 : yabai -m space --focus ws1
+alt - 2 : yabai -m space --focus ws2
+alt - 3 : yabai -m space --focus ws3
+alt - 4 : yabai -m space --focus ws4
+alt - 5 : yabai -m space --focus ws5
+alt - 6 : yabai -m space --focus ws6
+alt - 7 : yabai -m space --focus ws7
+alt - 8 : yabai -m space --focus ws8
+alt - 9 : yabai -m space --focus ws9
+alt - 0 : yabai -m space --focus ws10
+
+# move-node-to-workspace N
+alt + shift - 1 : yabai -m window --space ws1; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 2 : yabai -m window --space ws2; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 3 : yabai -m window --space ws3; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 4 : yabai -m window --space ws4; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 5 : yabai -m window --space ws5; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 6 : yabai -m window --space ws6; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 7 : yabai -m window --space ws7; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 8 : yabai -m window --space ws8; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 9 : yabai -m window --space ws9; open -g "swiftbar://refreshplugin?name=yabai"
+alt + shift - 0 : yabai -m window --space ws10; open -g "swiftbar://refreshplugin?name=yabai"
+
+# workspace-back-and-forth
+alt - tab : yabai -m space --focus recent
+# move-workspace-to-monitor --wrap-around next
+alt + shift - tab : yabai -m space --display next || yabai -m space --display first
+
+# service mode; f20 is a synthetic key that only returns to default
+:: service
+alt + shift - 0x29 ; service
+service < f20 ; default
+
+service < escape : skhd -k f20; yabai --restart-service; skhd --reload
+# flatten-workspace-tree
+service < r : skhd -k f20; yabai -m space --layout bsp; yabai -m space --balance
+# layout floating tiling
+service < f : skhd -k f20; yabai -m window --toggle float
+# close-all-windows-but-current
+service < backspace : skhd -k f20; yabai -m query --windows --space \
+                        | jq '.[] | select(."has-focus" | not) | select(."is-minimized" | not) | .id' \
+                        | xargs -I{} yabai -m window {} --close
+
+# join-with: re-insert focused window splitting the neighbour
+service < alt + shift - h : skhd -k f20; yabai -m window --warp west
+service < alt + shift - j : skhd -k f20; yabai -m window --warp south
+service < alt + shift - k : skhd -k f20; yabai -m window --warp north
+service < alt + shift - l : skhd -k f20; yabai -m window --warp east

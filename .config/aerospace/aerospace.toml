@@ -2,7 +2,7 @@ after-login-command = []
 
 after-startup-command = []
 
-start-at-login = true
+start-at-login = false
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -118,18 +118,6 @@ run = ['move-node-to-workspace 4']
 [[on-window-detected]]
 if.app-id = 'dev.kdrag0n.MacVirt'
 run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = ['move-node-to-workspace 9']
-
-[[on-window-detected]]
-if.app-id = 'notion.id'
-run = ['move-node-to-workspace 7']
-
-[[on-window-detected]]
-if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = ['move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
