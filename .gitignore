@@ -4,3 +4,4 @@ Brewfile
 .claude.secrets.env
 .config/zsh/local.zsh
 
+.claude/settings.json

@@ -1,0 +1,36 @@
+# Overlay: paid opencode-go setup + free jev judge.
+# Usage: omp --config ~/.omp/agent/paid.yml (alias ompn)
+# Overlay keys win over config.yml on every launch, so model/effort changes made
+# inside a session (they land in config.yml) are reset on the next start.
+# Keep every role listed here and in free.yml, or a role set in one leaks into the other.
+modelRoles:
+  default: opencode-go/deepseek-v4.1-flash
+  smol: opencode-go/deepseek-v4.1-flash:low
+  slow: opencode-go/glm-5.3:high
+  plan: opencode-go/grok-4.7:high
+  task: opencode-go/deepseek-v4.1-flash
+  advisor: opencode-go/mimo-v2.6-pro:high
+  vision: opencode-go/deepseek-v4.1-flash
+  commit: opencode-go/deepseek-v4.1-flash:low
+  tiny: opencode-go/deepseek-v4.1-flash:low
+  memory: opencode-go/deepseek-v4.1-flash:low
+  judge: typesafe/jev-1.13-free,@smol
+defaultThinkingLevel: auto
+providers:
+  autoThinkingMaxEffort: max
+features:
+  unexpectedStopDetection: smart
+# grok has its own $3/5h cap: on exhaustion switch to mimo instead of sleeping
+# (omp tries credential/model fallback before waitForUsageReset).
+retry:
+  fallbackChains:
+    opencode-go/grok-4.7: ["opencode-go/mimo-v2.6-pro:high"]
+# Parallel subagents drain the plan-wide $12/5h cap fastest.
+task:
+  maxConcurrency: 6
+# Advisor reviews every 3rd step; skipped steps are folded into the next review.
+# The final step is reviewed only when it lands on a 3rd; there only blockers send the agent back.
+advisor:
+  enabled: true
+  reviewMode: turn
+  reviewInterval: 3

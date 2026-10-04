@@ -1,0 +1,11 @@
+# Free jev (TypeSafe System One) via OpenCode Zen: judge role
+# (auto thinking, unexpected stops, find, judged rules, AI staging).
+# Zen accepts the shared "public" key for free models.
+providers:
+  typesafe:
+    baseUrl: https://opencode.ai/zen
+    api: typesafe
+    apiKey: public
+    models:
+      - id: jev-1.13-free
+        name: Jev 1.13 Free

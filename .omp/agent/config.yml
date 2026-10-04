@@ -1,0 +1,88 @@
+# Fallback for non-interactive launches (scripts, herdr, Claude via Bash) where the
+# ompn/ompf aliases don't apply; otherwise bare omp auto-picks anthropic. Mirrors paid.yml.
+modelRoles:
+  default: opencode-go/deepseek-v4.1-flash
+  smol: opencode-go/deepseek-v4.1-flash:low
+  slow: opencode-go/glm-5.3:high
+  plan: opencode-go/grok-4.7:high
+  task: opencode-go/deepseek-v4.1-flash
+  advisor: opencode-go/mimo-v2.6-pro:high
+  vision: opencode-go/deepseek-v4.1-flash
+  commit: opencode-go/deepseek-v4.1-flash:low
+  tiny: opencode-go/deepseek-v4.1-flash:low
+  memory: opencode-go/deepseek-v4.1-flash:low
+  judge: typesafe/jev-1.13-free,@smol
+defaultThinkingLevel: auto
+providers:
+  autoThinkingMaxEffort: max
+features:
+  unexpectedStopDetection: smart
+symbolPreset: nerd
+composer:
+  shape: claude
+  tokenRate: false
+theme:
+  dark: claude-code
+  light: light
+setupVersion: 2
+memory:
+  backend: local
+hideThinkingBlock: true
+statusLine:
+  separator: none
+  sessionAccent: false
+  transparent: true
+  compactThinkingLevel: true
+  preset: custom
+  leftSegments:
+    - model
+    - mode
+    - path
+    - git
+    - pr
+  rightSegments:
+    - session_name
+    - token_in
+    - token_out
+    - cost
+  contextLine: "off"
+tui:
+  resizeScrollback: preserve
+  titleSpinner: braille
+  hyperlinks: auto
+  reactions: false
+terminal:
+  showProgress: false
+display:
+  shimmer: disabled
+  showTokenUsage: false
+  pinnedAgents: "off"
+personality: pragmatic
+retry:
+  waitForUsageReset: true
+autolearn:
+  enabled: true
+bash:
+  enabled: true
+todo:
+  eager: always
+task:
+  maxRuntimeMs: 0
+spelling:
+  typoDetection: false
+  autocomplete: "off"
+recap:
+  enabled: false
+tools:
+  intentTracing: false
+startup:
+  quiet: false
+  changelogMode: hidden
+advisor:
+  enabled: true
+  reviewMode: turn
+  reviewInterval: 3
+lsp:
+  diagnosticsOnEdit: true
+skills:
+  enableClaudeUser: false

@@ -9,3 +9,4 @@ iterm
 .claude-shared
 .claude.mcp.json
 .claude.secrets.env
+.DS_Store

@@ -1,0 +1,11 @@
+# Overlay on top of paid.yml: implementing plans that Claude hands over via herdr.
+# Usage: omp --config ~/.omp/agent/paid.yml --config ~/.omp/agent/claude.yml (alias ompc)
+# Effort pinned: jev's auto rubric rates any plan with a given design as low.
+# Advisor reviews during implementation (Claude verifies at the end); skipped
+# updates are folded into the next review, so interval 3 still sees everything.
+modelRoles:
+  default: opencode-go/deepseek-v4.1-flash:high
+advisor:
+  enabled: true
+  reviewMode: turn
+  reviewInterval: 3

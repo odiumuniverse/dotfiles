@@ -1,0 +1,24 @@
+# Overlay: free models, no advisor (review goes to external orchestrator).
+# Usage: omp --config ~/.omp/agent/free.yml (alias ompf)
+# Keep the same role set as paid.yml: overlays merge per key over config.yml.
+modelRoles:
+  default: opencode-go/space-bunny-free
+  smol: opencode-go/longcat-2.5-preview-free
+  slow: opencode-go/space-bunny-free:xhigh
+  plan: opencode-go/space-bunny-free:xhigh
+  task: opencode-go/space-bunny-free
+  advisor: opencode-go/longcat-2.5-preview-free
+  vision: opencode-go/space-bunny-free
+  commit: opencode-go/longcat-2.5-preview-free
+  tiny: opencode-go/longcat-2.5-preview-free
+  memory: opencode-go/longcat-2.5-preview-free
+  judge: typesafe/jev-1.13-free,@smol
+defaultThinkingLevel: auto
+providers:
+  autoThinkingMaxEffort: max
+features:
+  unexpectedStopDetection: smart
+advisor:
+  enabled: false
+retry:
+  waitForUsageReset: false
