@@ -1,17 +1,14 @@
-# Fallback for non-interactive launches (scripts, herdr, Claude via Bash) where the
-# ompn/ompf aliases don't apply; otherwise bare omp auto-picks anthropic. Mirrors paid.yml.
 modelRoles:
-  default: opencode-go/deepseek-v4.1-flash
   smol: opencode-go/deepseek-v4.1-flash:low
-  slow: opencode-go/glm-5.3:high
-  plan: opencode-go/grok-4.7:high
+  slow: opencode-go/glm-5.3-flash:high
+  plan: anthropic/claude-opus-5-5:high
   task: opencode-go/deepseek-v4.1-flash
-  advisor: opencode-go/mimo-v2.6-pro:high
+  advisor: anthropic/claude-sonnet-5-5:high
   vision: opencode-go/deepseek-v4.1-flash
   commit: opencode-go/deepseek-v4.1-flash:low
   tiny: opencode-go/deepseek-v4.1-flash:low
   memory: opencode-go/deepseek-v4.1-flash:low
-  judge: typesafe/jev-1.13-free,@smol
+  judge: "typesafe/jev-1.13-free,@smol"
 defaultThinkingLevel: auto
 providers:
   autoThinkingMaxEffort: max
@@ -60,6 +57,9 @@ display:
 personality: pragmatic
 retry:
   waitForUsageReset: true
+  fallbackChains:
+    anthropic/claude-opus-5-5: ["opencode-go/glm-5.3-flash:high"]
+    anthropic/claude-sonnet-5-5: ["opencode-go/mimo-v2.6-flash:high"]
 autolearn:
   enabled: true
 bash:
@@ -80,8 +80,7 @@ startup:
   changelogMode: hidden
 advisor:
   enabled: true
-  reviewMode: turn
-  reviewInterval: 3
+  reviewMode: agent-end
 lsp:
   diagnosticsOnEdit: true
 skills:

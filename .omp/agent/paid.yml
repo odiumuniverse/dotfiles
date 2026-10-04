@@ -6,10 +6,10 @@
 modelRoles:
   default: opencode-go/deepseek-v4.1-flash
   smol: opencode-go/deepseek-v4.1-flash:low
-  slow: opencode-go/glm-5.3:high
-  plan: opencode-go/grok-4.7:high
+  slow: anthropic/claude-sonnet-5-5:high
+  plan: anthropic/claude-opus-5-5:high
   task: opencode-go/deepseek-v4.1-flash
-  advisor: opencode-go/mimo-v2.6-pro:high
+  advisor: anthropic/claude-sonnet-5-5:high
   vision: opencode-go/deepseek-v4.1-flash
   commit: opencode-go/deepseek-v4.1-flash:low
   tiny: opencode-go/deepseek-v4.1-flash:low
@@ -20,17 +20,22 @@ providers:
   autoThinkingMaxEffort: max
 features:
   unexpectedStopDetection: smart
-# grok has its own $3/5h cap: on exhaustion switch to mimo instead of sleeping
-# (omp tries credential/model fallback before waitForUsageReset).
+# Go weighs spend by the model's monthly limit: $15-limit models (mimo-v2.6-pro, grok-4.7,
+# glm-5.3) count x4 against the plan caps, $60-limit ones x1. Only cheap x1 models from Go:
+# grok burned 30% of a week in 3 minutes. Cache read dominates spend, so the high-volume
+# roles stay on the $0.003/M models; the rare slow role runs on Claude sonnet (glm-5.3-flash is its fallback).
+# plan + advisor + slow run on the Claude Pro account logged into omp. When it hits its 5h/weekly
+# cap, fall back to cheap Go models instead of sleeping until the reset.
 retry:
   fallbackChains:
-    opencode-go/grok-4.7: ["opencode-go/mimo-v2.6-pro:high"]
+    anthropic/claude-opus-5-5: ["opencode-go/glm-5.3-flash:high"]
+    anthropic/claude-sonnet-5-5: ["opencode-go/glm-5.3-flash:high", "opencode-go/mimo-v2.6-flash:high"]
 # Parallel subagents drain the plan-wide $12/5h cap fastest.
 task:
   maxConcurrency: 6
-# Advisor reviews every 3rd step; skipped steps are folded into the next review.
-# The final step is reviewed only when it lands on a 3rd; there only blockers send the agent back.
+# Advisor reviews only the final answer: a per-step review re-reads the whole context
+# (~25% of a Claude Pro week per night at interval 3). In agent-end mode concerns, not
+# only blockers, send the agent back.
 advisor:
   enabled: true
-  reviewMode: turn
-  reviewInterval: 3
+  reviewMode: agent-end

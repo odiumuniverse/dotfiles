@@ -1,0 +1,24 @@
+# Overlay: opencode-go only (no Claude). Usage: omp --config ~/.omp/agent/go.yml (alias ompo)
+# Overlay keys win over config.yml on every launch. Every role is listed, or the Claude
+# roles from config.yml (plan/advisor) leak in. Only cheap x1 Go models (see paid.yml).
+# Roles without an effort suffix follow the session's auto level; suffixed roles are pinned.
+modelRoles:
+  default: opencode-go/deepseek-v4.1-flash
+  smol: opencode-go/deepseek-v4.1-flash:low
+  slow: opencode-go/glm-5.3-flash:high
+  plan: opencode-go/glm-5.3-flash:high
+  task: opencode-go/deepseek-v4.1-flash
+  advisor: opencode-go/mimo-v2.6-flash:high
+  vision: opencode-go/deepseek-v4.1-flash
+  commit: opencode-go/deepseek-v4.1-flash:low
+  tiny: opencode-go/deepseek-v4.1-flash:low
+  memory: opencode-go/deepseek-v4.1-flash:low
+  judge: typesafe/jev-1.13-free,@smol
+retry:
+  fallbackChains:
+    opencode-go/glm-5.3-flash: ["opencode-go/mimo-v2.6-flash:high"]
+task:
+  maxConcurrency: 6
+advisor:
+  enabled: true
+  reviewMode: agent-end
