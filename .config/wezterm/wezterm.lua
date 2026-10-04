@@ -17,7 +17,12 @@ local config = wezterm.config_builder()
 -- config.color_scheme = "Google Light (Gogh)"
 config.color_scheme = "cyberdream"
 -- config.color_scheme = "Google (light) (terminal.sexy)"
-config.font = wezterm.font("FiraCode Nerd Font Mono")
+-- Herdr Agent Icons Max: herdr-radar vendor logos (U+E1A0–E1B7, U+E1C0–E1C5).
+-- Without it WezTerm falls back to STIX Two Math for those codepoints.
+config.font = wezterm.font_with_fallback({
+	"FiraCode Nerd Font Mono",
+	"Herdr Agent Icons Max",
+})
 -- config.font = wezterm.font("RobotoMono Nerd Font")
 config.font_size = 17
 config.enable_tab_bar = false

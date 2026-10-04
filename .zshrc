@@ -50,6 +50,11 @@ alias python="python3"
 alias cur="cursor-agent"
 alias cs="cswap --switch"
 alias spt="spotatui"
+# omp: vanilla isolated profile; ompn/ompf: main dir + overlay (roles reset each launch)
+alias omp="command omp --profile vanilla"
+alias ompn="command omp --config ~/.omp/agent/paid.yml"
+alias ompf="command omp --config ~/.omp/agent/free.yml"
+alias ompc="command omp --config ~/.omp/agent/paid.yml --config ~/.omp/agent/claude.yml"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # eval "$(oh-my-posh init zsh)"
@@ -104,3 +109,9 @@ done
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
