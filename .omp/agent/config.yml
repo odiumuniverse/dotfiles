@@ -26,40 +26,40 @@ memory:
   backend: local
 hideThinkingBlock: true
 statusLine:
-  separator: none
+  separator: block
   sessionAccent: false
   transparent: true
   compactThinkingLevel: true
+  showHookStatus: false
   preset: custom
   leftSegments:
-    - model
     - mode
+    - model
     - path
     - git
     - pr
   rightSegments:
-    - session_name
-    - token_in
-    - token_out
-    - cost
-  contextLine: "off"
+    []
+  contextLine: embedded
 tui:
-  resizeScrollback: preserve
+  resizeScrollback: rebuild
   titleSpinner: braille
   hyperlinks: auto
   reactions: false
 terminal:
-  showProgress: false
+  showProgress: true
 display:
-  shimmer: disabled
+  shimmer: classic
   showTokenUsage: false
   pinnedAgents: "off"
 personality: pragmatic
 retry:
   waitForUsageReset: true
   fallbackChains:
-    anthropic/claude-opus-5-5: ["opencode-go/glm-5.3-flash:high"]
-    anthropic/claude-sonnet-5-5: ["opencode-go/mimo-v2.6-flash:high"]
+    anthropic/claude-opus-5-5:
+      - opencode-go/glm-5.3-flash:high
+    anthropic/claude-sonnet-5-5:
+      - opencode-go/mimo-v2.6-flash:high
 autolearn:
   enabled: true
 bash:
@@ -68,20 +68,49 @@ todo:
   eager: always
 task:
   maxRuntimeMs: 0
+  eager: preferred
+  enableLsp: true
 spelling:
   typoDetection: false
-  autocomplete: "off"
+  autocomplete: ngram
 recap:
   enabled: false
 tools:
   intentTracing: false
+  approvalMode: yolo
 startup:
   quiet: false
   changelogMode: hidden
 advisor:
   enabled: true
   reviewMode: agent-end
+  syncBacklog: "3"
 lsp:
   diagnosticsOnEdit: true
 skills:
   enableClaudeUser: false
+dev:
+  autoqaConsent: denied
+steeringMode: one-at-a-time
+completion:
+  notify: "off"
+stt:
+  enabled: true
+  submitTrigger: say-submit
+marketplace:
+  autoUpdate: auto
+astGrep:
+  enabled: true
+computer:
+  enabled: true
+vault:
+  enabled: true
+github:
+  enabled: true
+security:
+  enabled: true
+commands:
+  enableClaudeUser: false
+  enableOpencodeUser: false
+disabledExtensions:
+  - extension-module:session-branch-widget
