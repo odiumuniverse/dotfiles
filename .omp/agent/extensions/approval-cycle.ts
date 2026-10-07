@@ -4,7 +4,7 @@ import {
 	type ExtensionAPI,
 	type ExtensionContext,
 } from "@oh-my-pi/pi-coding-agent";
-import { matchesKey, truncateToWidth, type Component } from "@oh-my-pi/pi-tui";
+import { matchesKey, truncateToWidth, visibleWidth, type Component } from "@oh-my-pi/pi-tui";
 
 // shift+tab cycles: plan → yolo → accept edits → manual → plan.
 // Plan is omp's own plan mode: the key falls through to app.plan.toggle (bound to shift+tab in keybindings.yml).
@@ -41,6 +41,10 @@ interface ModeSegment {
 	render(this: ModeSegment, ctx: ModeSegmentContext): { content: string; visible: boolean };
 }
 
+// Claude Code shows the live context size dimmed at the right of this row; so do we. It reads the
+// session's current usage on every paint, so compaction, /new and a model switch show up on their own.
+const TOKENS_COLOR = "100;100;100";
+
 class SessionName implements Component {
 	readonly #ctx: ExtensionContext;
 
@@ -50,7 +54,14 @@ class SessionName implements Component {
 
 	render(width: number): readonly string[] {
 		const name = this.#ctx.sessionManager.getSessionName()?.trim() || "untitled";
-		return [truncateToWidth(` ${paint("215;119;87", name)}`, width)];
+		const left = ` ${paint("215;119;87", name)}`;
+		const tokens = this.#ctx.getContextUsage()?.tokens;
+		if (!tokens || !Number.isFinite(tokens)) {
+			return [truncateToWidth(left, width)];
+		}
+		const right = paint(TOKENS_COLOR, `${Math.round(tokens)} tokens `);
+		const gap = width - visibleWidth(left) - visibleWidth(right);
+		return [gap >= 2 ? left + " ".repeat(gap) + right : truncateToWidth(left, width)];
 	}
 }
 
@@ -134,6 +145,15 @@ export default function (pi: ExtensionAPI) {
 
 	pi.on("session_start", (_event, ctx) => listen(ctx));
 	pi.on("session_switch", (_event, ctx) => listen(ctx));
+
+	// The row repaints on any frame; these events are the ones after which the number changes while idle.
+	for (const event of ["turn_end", "agent_end", "session_compact", "auto_compaction_end", "session_branch", "session_tree"] as const) {
+		pi.on(event, (_event, ctx) => {
+			if (ctx.hasUI && ctx.mode === "tui") {
+				repaint(ctx);
+			}
+		});
+	}
 
 	pi.on("tool_call", async (event, ctx) => {
 		if (approval === "yolo" || !ctx.hasUI || READ_ONLY_TOOL_NAMES.has(event.toolName) || planMode(ctx) === "plan") {

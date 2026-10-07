@@ -79,7 +79,7 @@ tools:
   intentTracing: false
   approvalMode: yolo
 startup:
-  quiet: false
+  quiet: true
   changelogMode: hidden
 advisor:
   enabled: true
