@@ -55,7 +55,7 @@ alias omp="command omp --profile vanilla"
 alias ompn="command omp --config ~/.omp/agent/paid.yml"
 alias ompf="command omp --config ~/.omp/agent/free.yml"
 alias ompc="command omp --config ~/.omp/agent/paid.yml --config ~/.omp/agent/claude.yml"
-alias ompd="command omp --config ~/.omp/agent/go.yml"# Generated for envman. Do not edit.
+alias ompd="command omp --config ~/.omp/agent/go.yml"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # eval "$(oh-my-posh init zsh)"
 eval $(thefuck --alias)

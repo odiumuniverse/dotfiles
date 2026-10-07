@@ -1,7 +1,6 @@
 README.md
-Brewfile
 .config/raycast
 .claude.secrets.env
 .config/zsh/local.zsh
-
+.DS_Store
 .claude/settings.json
