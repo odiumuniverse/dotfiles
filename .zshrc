@@ -62,6 +62,12 @@ eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 eval "$(fzf --zsh)"
 
+# macOS-style line editing; Cmd keys are mapped to Home/End/^U in wezterm.lua
+bindkey '^[[1;3D' backward-word      # Option+Left
+bindkey '^[[1;3C' forward-word       # Option+Right
+bindkey '^U' backward-kill-line      # Cmd+Backspace
+bindkey '^Z' undo                    # Ctrl+Z
+
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm

@@ -1,18 +1,5 @@
 local wezterm = require("wezterm")
 
-local keys = {}
-for i = 32, 126 do
-	local c = string.char(i)
-	table.insert(keys, {
-		key = c,
-		mods = "OPT",
-		action = wezterm.action.SendKey({
-			key = c,
-			mods = "ALT",
-		}),
-	})
-end
-
 local config = wezterm.config_builder()
 -- config.color_scheme = "Google Light (Gogh)"
 config.color_scheme = "cyberdream"
@@ -36,6 +23,14 @@ config.window_padding = {
 	right = 0,
 	top = 25,
 	bottom = 10,
+}
+
+-- Cmd keys never reach the shell; translate to sequences zsh/nvim understand.
+-- Not Ctrl+A/E: Ctrl+A is the tmux/herdr prefix.
+config.keys = {
+	{ key = "LeftArrow", mods = "CMD", action = wezterm.action.SendKey({ key = "Home" }) },
+	{ key = "RightArrow", mods = "CMD", action = wezterm.action.SendKey({ key = "End" }) },
+	{ key = "Backspace", mods = "CMD", action = wezterm.action.SendKey({ key = "u", mods = "CTRL" }) },
 }
 
 config.max_fps = 120

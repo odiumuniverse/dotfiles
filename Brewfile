@@ -202,8 +202,6 @@ brew "vmkteam/tap/pgdesigner"
 cask "nikitabobko/tap/aerospace", trusted: true
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Caps Lock LED indicator for coding agent sessions
-cask "odiumuniverse/tap/cuelight", trusted: true
 # GUI including a set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
 # Simple application that will prevent iTunes or Apple Music from launching
