@@ -9,11 +9,6 @@ after-startup-command = []
 
 start-at-login = true
 
-# arc-window.sh reads the last switch to undo the jump Arc's activation causes
-exec-on-workspace-change = ['/bin/bash', '-c',
-  'echo "$(date +%s) $AEROSPACE_PREV_WORKSPACE $AEROSPACE_FOCUSED_WORKSPACE" > /tmp/aerospace-workspace-switch',
-]
-
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
@@ -99,10 +94,9 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-# Little Arc stays on the current workspace, see arc-window.sh
 [[on-window-detected]]
 if = 'test %{app-bundle-id} = company.thebrowser.Browser'
-run = ['exec-and-forget ~/.config/aerospace/arc-window.sh']
+run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
 if = 'test %{app-bundle-id} = com.github.wez.wezterm'

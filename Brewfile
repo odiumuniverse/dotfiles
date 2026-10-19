@@ -24,6 +24,8 @@ brew "harfbuzz"
 brew "libtiff"
 # Tool for reverse engineering 3rd party, closed, binary Android apps
 brew "apktool"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
