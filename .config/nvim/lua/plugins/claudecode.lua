@@ -1,0 +1,1 @@
+/Users/universe/my/claudecode.nvim/lazyvim/claudecode.lua

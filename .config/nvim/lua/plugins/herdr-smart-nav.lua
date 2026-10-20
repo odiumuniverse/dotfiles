@@ -1,16 +1,6 @@
-local ROOT = "/Users/universe/my/herdr-smart-nav"
+-- <C-h/j/k/l>: nvim window -> herdr pane -> tab -> space. setup() maps the keys and maps them again on VeryLazy.
 return {
-  dir = ROOT,
-  name = "herdr-smart-nav",
-  config = function()
-    local load = function()
-      dofile(ROOT .. "/editor/nvim.lua")
-    end
-    load()
-    vim.api.nvim_create_autocmd("User", {
-      group = vim.api.nvim_create_augroup("HerdrSmartNav", { clear = true }),
-      pattern = "VeryLazy",
-      callback = load,
-    })
-  end,
+  "odiumuniverse/herdr-smart-nav",
+  build = "cargo build --release",
+  opts = {},
 }

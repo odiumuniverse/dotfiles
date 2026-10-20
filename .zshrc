@@ -51,6 +51,15 @@ alias h="hyfetch"
 alias python="python3"
 alias cur="cursor-agent"
 alias cs="cswap --switch"
+# cswap run: transcripts and memory (projects/, history.jsonl) shared with ~/.claude across accounts
+cswap() {
+  if [[ $1 == run ]]; then
+    shift
+    command cswap run --share-history "$@"
+  else
+    command cswap "$@"
+  fi
+}
 alias spt="spotatui"
 # omp: vanilla isolated profile; ompn/ompf: main dir + overlay (roles reset each launch)
 alias omp="command omp --profile vanilla"
