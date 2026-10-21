@@ -1,6 +1,0 @@
-# Overlay on top of paid.yml: implementing plans that Claude hands over via herdr.
-# Usage: omp --config ~/.omp/agent/paid.yml --config ~/.omp/agent/claude.yml (alias ompc)
-# Effort pinned: jev's auto rubric rates any plan with a given design as low.
-# Advisor (agent-end, Claude) is inherited from paid.yml; Claude Code still does the final verification.
-modelRoles:
-  default: opencode-go/deepseek-v4.1-flash:high

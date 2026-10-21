@@ -49,7 +49,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias h="hyfetch"
 alias python="python3"
-alias cur="cursor-agent"
 alias cs="cswap --switch"
 # cswap run: transcripts and memory (projects/, history.jsonl) shared with ~/.claude across accounts
 cswap() {
@@ -61,12 +60,6 @@ cswap() {
   fi
 }
 alias spt="spotatui"
-# omp: vanilla isolated profile; ompn/ompf: main dir + overlay (roles reset each launch)
-alias omp="command omp --profile vanilla"
-alias ompn="command omp --config ~/.omp/agent/paid.yml"
-alias ompf="command omp --config ~/.omp/agent/free.yml"
-alias ompc="command omp --config ~/.omp/agent/paid.yml --config ~/.omp/agent/claude.yml"
-alias ompd="command omp --config ~/.omp/agent/go.yml"
 # eval "$(oh-my-posh init zsh)"
 eval "$(thefuck --alias fk)"
 alias fuck=fk
@@ -112,7 +105,6 @@ boundary() {
 }
 
 
-# Added by Antigravity CLI installer
 export PATH="/Users/universe/.local/bin:$PATH"
 
 # herdr-automatic-rename: мгновенное переименование табов при старте команды

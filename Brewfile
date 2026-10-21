@@ -64,8 +64,6 @@ brew "fontforge"
 brew "fzf"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# Interact with Google Gemini AI models from the command-line
-brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
 # OCR (Optical Character Recognition) engine
@@ -184,10 +182,6 @@ brew "zig"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# OpenCode V2 - the AI coding agent for the terminal
-brew "anomalyco/tap/opencode-v2", trusted: true
-# Coding agent with the IDE wired in
-brew "can1357/tap/omp", trusted: true
 # Boundary
 brew "hashicorp/tap/boundary", trusted: true
 # Nomad
@@ -202,14 +196,10 @@ brew "stripe/stripe-cli/stripe", trusted: true
 brew "vmkteam/tap/pgdesigner"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # GUI including a set of tools to create, alter and inspect Matroska files (MKV)
 cask "mkvtoolnix-app"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
-# AI coding agent desktop client
-cask "opencode-desktop"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Private curl — hide auth headers from AI agents
@@ -252,11 +242,9 @@ cargo "myx"
 cargo "spotify_player"
 uv "trafilatura"
 npm "@colbymchenry/codegraph"
-npm "@kilocode/cli"
 npm "@smithery/cli"
 npm "claude-multi"
 npm "corepack"
 npm "obsidian-headless"
-npm "opencode-ai"
 npm "quicktype"
 npm "yarn"
